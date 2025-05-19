@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>登入系統</title>
+  <link href="/luckyShop/css/login.css" rel="stylesheet" />
+  <!-- 導入Font Awesome圖標 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+<body>
+<div class="container">
+  <div class="login-card">
+    <form id="loginForm" class="login-form">
+      <div class="input-group">
+        <label for="username">用戶名</label>
+        <div class="input-field">
+          <i class="fas fa-user"></i>
+          <input type="text" id="username" name="username" placeholder="請輸入您的用戶名" required>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <div class="password-label">
+          <label for="password">密碼</label>
+          <a href="#" class="forgot-password">忘記密碼?</a>
+        </div>
+        <div class="input-field">
+          <i class="fas fa-lock"></i>
+          <input type="password" id="password" name="password" placeholder="請輸入您的密碼" required>
+          <i class="fas fa-eye-slash toggle-password"></i>
+        </div>
+      </div>
+
+      <div class="remember-me">
+        <label class="checkbox-container">
+          <input type="checkbox" id="rememberMe" name="rememberMe">
+          <span class="checkmark"></span>
+          記住我
+        </label>
+      </div>
+
+      <button type="submit" class="login-button">登入</button>
+
+      <div class="login-divider">
+        <span>或使用其他方式登入</span>
+      </div>
+
+      <div class="social-login">
+        <button type="button" class="google-btn">
+          <i class="fab fa-google"></i>
+          Google
+        </button>
+        <button type="button" class="facebook-btn">
+          <i class="fab fa-facebook-f"></i>
+          Facebook
+        </button>
+      </div>
+    </form>
+
+    <div class="register-link">
+      還沒有帳戶? <a href="#">立即註冊</a>
+    </div>
+  </div>
+</div>
+
+<script>
+  // 切換密碼可見性
+  document.querySelector('.toggle-password').addEventListener('click', function() {
+    const passwordInput = document.getElementById('password');
+    const passwordToggle = this;
+
+    if (passwordInput.type === 'password') {
+      passwordInput.type = 'text';
+      passwordToggle.classList.remove('fa-eye-slash');
+      passwordToggle.classList.add('fa-eye');
+    } else {
+      passwordInput.type = 'password';
+      passwordToggle.classList.remove('fa-eye');
+      passwordToggle.classList.add('fa-eye-slash');
+    }
+  });
+
+  // 表單提交事件
+  document.getElementById('loginForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    // 這裡可以加入表單驗證和提交邏輯
+    alert('登入功能將在後端整合後啟用');
+  });
+</script>
+</body>
+</html>
