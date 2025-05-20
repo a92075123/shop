@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.shop.dao.UserMapper">
+    <!-- 結果映射 -->
+    <resultMap id="UserResultMap" type="com.example.shop.service.vo.User">
+        <id property="id" column="id"/>
+        <result property="username" column="username"/>
+        <result property="password" column="password"/>
+        <result property="email" column="email"/>
+        <result property="phone" column="phone"/>
+        <result property="address" column="address"/>
+        <result property="createdAt" column="created_at"/>
+    </resultMap>
+
+    <select id="getUsers" resultMap="UserResultMap">
+        select * from users
+    </select>
+
+    <select id="getUserById" resultMap="UserResultMap">
+        select * from users where username = #{username}
+    </select>
+
+</mapper>
