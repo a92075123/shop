@@ -1,11 +1,8 @@
 package com.example.shop.common;
 
+import lombok.Data;
 
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-
-@Builder
-@AllArgsConstructor
+@Data
 public class AjaxResult {
 
     /** 狀態碼 */
@@ -24,6 +21,11 @@ public class AjaxResult {
     private String msg;
     private Object data;
 
+    public AjaxResult(int code, String msg, Object data) {
+        this.code = code;
+        this.msg = msg;
+        this.data = data;
+    }
 
     public static AjaxResult success(String msg, Object data) {
         return new AjaxResult(SUCCESS, msg, data);

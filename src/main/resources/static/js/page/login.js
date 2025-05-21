@@ -9,6 +9,7 @@ $(function(){
 添加按鈕事件
  */
 function addOnclickEvent() {
+
     $("#loginButton").on("click",function () {
         $.ajax({
             url:getContextPath() + "/isCheckUser",
@@ -16,8 +17,11 @@ function addOnclickEvent() {
             contentType: "application/json",
             data:JSON.stringify(insertForm.serializeJSON()),
             success:function (result) {
-
+                if(result.code != 200){
+                    alert(result.msg);
+                }
             }
         });
     });
+
 }
