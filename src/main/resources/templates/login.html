@@ -2,7 +2,6 @@
 <html lang="zh-TW">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>登入系統</title>
   <link href="/luckyShop/css/login.css" rel="stylesheet" />
   <!-- 導入Font Awesome圖標 -->
@@ -12,15 +11,17 @@
 <div class="container">
   <div class="login-card">
     <form id="loginForm" class="login-form">
-      <div class="input-group">
+      <div class="input-group form-group" >
         <label for="username">用戶名</label>
         <div class="input-field">
           <i class="fas fa-user"></i>
           <input type="text" id="username" name="username" placeholder="請輸入您的用戶名" required>
         </div>
+        <span class="error-message"></span>
       </div>
 
-      <div class="input-group">
+
+      <div class="input-group form-group">
         <div class="password-label">
           <label for="password">密碼</label>
           <a href="#" class="forgot-password">忘記密碼?</a>
@@ -30,7 +31,9 @@
           <input type="password" id="password" name="password" placeholder="請輸入您的密碼" required>
           <i class="fas fa-eye-slash toggle-password"></i>
         </div>
+        <span class="error-message"></span>
       </div>
+
 
       <div class="remember-me">
         <label class="checkbox-container">
@@ -63,9 +66,17 @@
     </div>
   </div>
 </div>
-<script src="/luckyShop/js/common/jquery.min.js"></script>
-<script src="/luckyShop/js/common/jquery.serializejson.js"></script>
-<script src="/luckyShop/js/utils/utils.js"></script>
-<script src="/luckyShop/js/page/login.js"></script>
+
+<script type="text/javascript" th:src="@{/js/common/jquery.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common/validation.js}"></script>
+<script type="text/javascript" th:src="@{/js/common/jquery.validate.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common/messages_zh.min.js}"></script>
+<script type="text/javascript" th:src="@{/js/common/jquery.serializejson.js}"></script>
+<script type="text/javascript" th:src="@{/js/common/validation.js}"></script>
+
+<script type="text/javascript" th:src="@{/js/utils/utils.js}"></script>
+<script type="text/javascript" th:src="@{/js/page/index.js}"></script>
+<script type="text/javascript" th:src="@{/js/page/login.js}"></script>
+
 </body>
 </html>

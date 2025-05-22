@@ -12,6 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
+import javax.servlet.ServletResponse;
+import java.io.IOException;
+
 @Slf4j
 @RestController
 @RequestMapping("/shop")
@@ -35,7 +38,8 @@ public class LoginController {
      * @return
      */
     @PostMapping("isCheckUser")
-    public AjaxResult isCheckUser(@RequestBody UserDto request) {
+    public AjaxResult isCheckUser(@RequestBody UserDto request , ServletResponse response) throws IOException {
+
         return loginService.checkUser(request);
     }
 }

@@ -2,6 +2,8 @@ package com.example.shop.common;
 
 import lombok.Data;
 
+import java.util.Map;
+
 @Data
 public class AjaxResult {
 
@@ -19,19 +21,19 @@ public class AjaxResult {
 
     private int code;
     private String msg;
-    private Object data;
+    private Map<String, Object> data; // 錯誤訊息Object data;
 
-    public AjaxResult(int code, String msg, Object data) {
+    public AjaxResult(int code, String msg,  Map<String, Object> data) {
         this.code = code;
         this.msg = msg;
         this.data = data;
     }
 
-    public static AjaxResult success(String msg, Object data) {
+    public static AjaxResult success(String msg,  Map<String, Object> data) {
         return new AjaxResult(SUCCESS, msg, data);
     }
 
-    public static AjaxResult error(String msg, Object data) {
+    public static AjaxResult error(String msg,  Map<String, Object> data) {
         return new AjaxResult(ERROR, msg, data);
     }
 }
