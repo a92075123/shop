@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+    <context id="mysql" targetRuntime="MyBatis3Simple">
+        <!-- 資料庫連線設定 -->
+        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver"
+                        connectionURL="jdbc:mysql://localhost:3306/order"
+                        userId="root"
+                        password="">
+        </jdbcConnection>
+
+        <!-- Java 模型產生器 -->
+        <javaModelGenerator targetPackage="com.example.shop.service.vo"
+                            targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- SQL Map 產生器 -->
+        <sqlMapGenerator targetPackage="mappers"
+                         targetProject="src/main/resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- Mapper 介面產生器 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.example.shop.dao"
+                             targetProject="src/main/java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <!-- 指定要產生的表格 -->
+        <table tableName="products" domainObjectName="Products" >
+            <property name="enableSelectByExample" value="false"/>
+            <property name="enableDeleteByExample" value="false"/>
+            <property name="enableCountByExample" value="false"/>
+            <property name="enableUpdateByExample" value="false"/>
+            <generatedKey column="id" sqlStatement="JDBC"/>
+        </table>
+    </context>
+</generatorConfiguration>

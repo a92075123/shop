@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.ServletResponse;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
 @Slf4j
@@ -22,6 +23,7 @@ import java.io.IOException;
 public class LoginController {
 
     private final LoginService loginService;
+    private final HttpServletRequest request;
 
     /**
      * 回傳登入畫面
@@ -38,8 +40,19 @@ public class LoginController {
      * @return
      */
     @PostMapping("isCheckUser")
-    public AjaxResult isCheckUser(@RequestBody UserDto request , ServletResponse response) throws IOException {
-
+    public AjaxResult isCheckUser(@RequestBody UserDto request) throws IOException {
         return loginService.checkUser(request);
+    }
+
+    /**
+     * 登出
+     *
+     */
+    @GetMapping("logout")
+    public ModelAndView logout() throws IOException {
+        HttpSession session = request.getSession();
+        session.removeAttribute("loginStatus");
+        ModelAndView mv = new ModelAndView("/index");
+        return mv;
     }
 }

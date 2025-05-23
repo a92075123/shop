@@ -28,7 +28,7 @@ function addOnclickEvent() {
                     return
                 }
                 window.location.href = getContextPath() +result.data.url;
-                index.loginCheck = 'true';
+                localStorage.setItem('isLoggedIn', "true");
             }
         });
     });

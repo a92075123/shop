@@ -14,17 +14,31 @@ $(function(){
 });
 
 index = {
-    loginCheck : null,
     init : function () {
-       console.log(index.loginCheck)
-       if(this.loginCheck != null && this.loginCheck==true) {
-           $('#login').text('logout').attr("href", "logout");
+       let loginCheck = localStorage.getItem('isLoggedIn');
+       if(loginCheck != null && loginCheck =='true'){
+           $('#login').text('logout').attr("href", "../shop/logout").attr("id","logout");
+           $('#logout').on("click",function () {
+                localStorage.removeItem('isLoggedIn');
+                $('#login').text('login').attr("href", "../shop/login").attr("id","login");
+           });
        }
     },
     addOnclickEvent : function () {
         $('.tm-nav-li a').on('click',function () {
-            console.log($(this).attr('href'));
+            if($(this).attr("href") == 'javascript:void(0);'){
+                $.ajax({
+                    url:getContextPath() + "/isCheckUser",
+                    type:"post",
+                    contentType: "application/json",
+                    success:function (result) {
+                        if(result.code != '200'){
+                            alert(result.msg);
+                            return
+                        }
+                    }
+                });
+            }
         });
     }
-
 }
