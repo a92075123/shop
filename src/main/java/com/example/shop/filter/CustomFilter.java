@@ -40,10 +40,10 @@ public class CustomFilter implements Filter {
             // 是登入頁或登入驗證，放行
             filterChain.doFilter(request, response);
         } else {
-            targetPage = uri.substring(uri.lastIndexOf("/", uri.length()));
-            if(!uri.contains("index")) {
-               httpResponse.sendRedirect(contextPath + "/shop/login");
-            }
+//            targetPage = uri.substring(uri.lastIndexOf("/", uri.length()));
+//            if(!uri.contains("index")) {
+//               httpResponse.sendRedirect(contextPath + "/shop/login");
+//            }
             filterChain.doFilter(request, response);
         }
     }

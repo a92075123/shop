@@ -1,19 +1,11 @@
 $(function(){
-    // Handle click on paging links
-    $('.tm-paging-link').click(function(e){
-        e.preventDefault();
-        var page = $(this).text().toLowerCase();
-        $('.tm-gallery-page').addClass('hidden');
-        $('#tm-gallery-page-' + page).removeClass('hidden');
-        $('.tm-paging-link').removeClass('active');
-        $(this).addClass("active");
-    });
     index.init();
     index.addOnclickEvent();
-
 });
 
 index = {
+    
+    //初始化
     init : function () {
        let loginCheck = localStorage.getItem('isLoggedIn');
        if(loginCheck != null && loginCheck =='true'){
@@ -24,18 +16,33 @@ index = {
            });
        }
     },
+
+    //按鈕功能
     addOnclickEvent : function () {
-        $('.tm-nav-li a').on('click',function () {
+
+        $('.tm-nav-link').on('click', function(e) {
+            // 移除所有active類
+            $('.tm-nav-link').removeClass('active');
+
+            // 為當前點擊的連結添加active類
+            $(this).addClass('active');
+        });
+
+        // 處理導航列點擊事件
+        $('.tm-nav-li a').on('click', function() {
+            let templateName = $(this).attr("id");
+            // 如果是javascript:void(0)的連結，才進行ajax請求
             if($(this).attr("href") == 'javascript:void(0);'){
                 $.ajax({
-                    url:getContextPath() + "/isCheckUser",
-                    type:"post",
+                    url: getContextPath() + "/pageTab",
+                    type: "post",
+                    data: templateName,
                     contentType: "application/json",
-                    success:function (result) {
+                    success: function(result) {
                         if(result.code != '200'){
-                            alert(result.msg);
-                            return
+                            return;
                         }
+                        $(".tm-main-content").html(result.data.content);
                     }
                 });
             }

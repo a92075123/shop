@@ -32,7 +32,7 @@ public class LoginService {
             HttpSession session = request.getSession();
             session.setAttribute("loginStatus","true");
             Map map =new HashMap<>();
-            map.put("url",CustomFilter.targetPage != null ? CustomFilter.targetPage : "/index");
+            map.put("url",CustomFilter.targetPage != "" ? CustomFilter.targetPage : "/index");
             // 回傳跳轉 URL 給前端
             return AjaxResult.success("success", map);
         }
