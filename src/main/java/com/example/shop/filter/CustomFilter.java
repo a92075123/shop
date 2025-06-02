@@ -34,10 +34,8 @@ public class CustomFilter implements Filter {
         }
 
         if ("true".equals(loginStatus)) {
-            // 已登入，放行
             filterChain.doFilter(request, response);
         } else if (uri.contains("login") || uri.contains("isCheckUser")||uri.contains("logout")) {
-            // 是登入頁或登入驗證，放行
             filterChain.doFilter(request, response);
         } else {
 //            targetPage = uri.substring(uri.lastIndexOf("/", uri.length()));
