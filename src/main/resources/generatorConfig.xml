@@ -33,7 +33,7 @@
         </javaClientGenerator>
 
         <!-- 指定要產生的表格 -->
-        <table tableName="products" domainObjectName="Products" >
+        <table tableName="foodorder" domainObjectName="FoodOrder" >
             <property name="enableSelectByExample" value="false"/>
             <property name="enableDeleteByExample" value="false"/>
             <property name="enableCountByExample" value="false"/>

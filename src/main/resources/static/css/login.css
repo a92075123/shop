@@ -65,7 +65,8 @@ body {
 }
 
 .input-group {
-    margin-bottom: 20px;
+    position: relative;
+    margin-bottom: 40px; /* 預留錯誤訊息空間 */
 }
 
 .input-group label {
@@ -101,7 +102,8 @@ body {
 .input-field i {
     position: absolute;
     top: 50%;
-    transform: translateY(-50%);
+    transform: translateY(-50%); /* 垂直置中 */
+    left: 10px;
     color: #aaa;
 }
 
@@ -328,10 +330,11 @@ body {
 
 /* 錯誤訊息樣式 */
 .error-message {
-    color: #e74c3c;
+    position: absolute;
+    bottom: -25px; /* 調整位置 */
+    left: 0;
+    color: red;
     font-size: 12px;
-    margin-top: 5px;
-    display: none;
 }
 
 input.error {
